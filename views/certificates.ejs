@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/certificates.css">
+</head>
+<body>
+    <% if(locals) {%>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Reg No</th>
+                <th>Course</th>
+                <th>Validation</th>
+            </tr>
+        <% for(let i=1;i<chain.length;i++) {  %>
+            <tr>
+                <td><%= chain[i].sname %></td>
+                <td><%= chain[i].reg %></td>
+                <td><%= chain[i].course %></td>    
+                <td><img width="70px" height="70px" src="<%= chain[i].qr %>" alt="error loading"></td>
+            </tr>
+        <% }%>
+        </table>
+    <% } %>
+</body>
+</html>
