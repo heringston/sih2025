@@ -46,8 +46,6 @@ class BlockChain{
         for(let i=1;i < this.chain.length;i++){
             // console.log(this.chain[i].hash);
             // console.log(this.chain[i].calculateHash());
-            
-            
             if(this.chain[i].hash != this.chain[i].calculateHash()){
                 return false;
             }
@@ -58,10 +56,12 @@ class BlockChain{
         return true;
     }
     getBlock(id){    
+        let certs = [];
         for(let i=0;i<this.chain.length;i++){
-            if(this.chain[i].certid == id)
-                return this.chain[i];
+            if(this.chain[i].reg == id)
+                certs.push(this.chain[i]);
         }
+        return certs;
     }
 }
 

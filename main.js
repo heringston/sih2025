@@ -52,6 +52,17 @@ app.get("/",(req,res)=>{
     res.render("form");
 });
 
+app.get("/student",(req,res)=>{
+    res.render("student");
+})
+
+app.post("/getCerts",(req,res)=>{
+    let certs = chain.getBlock(req.body.id);
+    console.log(certs.length);
+    
+    res.render("studentCerts",{certs:certs});
+})
+
 app.post("/certInfo",(req,res)=>{
     let block = new Block(0,req.body.sname,req.body.reg,req.body.course,req.body.fname,req.body.iid);
     chain.addBlock(block);
@@ -84,12 +95,6 @@ app.get("/verify",(req,res)=>{
 });
 
 app.get("/view",(req,res)=>{
-    pool.query("Select * from certificates",(err,result)=>{
-        if(err) throw err;
-        
-        else
-            console.log(result.rows);            
-    });    
     res.render("certificates",chain);
 });
 
