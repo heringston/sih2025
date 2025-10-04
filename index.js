@@ -7,7 +7,7 @@ import qrcode from "qrcode";
 import { jsPDF } from "jspdf";
 
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 const saltrounds=10;
 const db = new pg.Client({
   user: "postgres",
@@ -282,6 +282,6 @@ app.get("/view",(req,res)=>{
     res.render("certificates.ejs",chain);
 });
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
