@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+  <title>University Register</title>
+</head>
+<body>
+
+  <h1>University Register</h1>
+  <div class="cards">
+  <form action="/uregister" method="POST">
+    <div class="input">
+      <label for="username">University Id</label>
+      <input required placeholder="id" type="text" name="username" id="username">
+    </div>
+    <div class="input">
+      <label for="password">Password</label>
+      <input required placeholder="password" type="password" name="password" id="password">
+    </div>
+    <button type="submit">Register</button>
+  </form>
+  </div>
+</body>
+</html>

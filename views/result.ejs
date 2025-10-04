@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+</head>
+<body>
+    <div class="receipt">
+        <h1>Issuance Receipt</h1>
+        <!-- <p><strong>Name:</strong><%# name %></p>
+        <p><strong>Reg No:</strong><%# regNo %></p>
+        <p><strong>Course:</strong><%# course %></p>
+        <img width="200px" height="200px" src="<%# url %>" alt="error loading">
+        !-->
+        <div class="btns">
+             <a href="#" onclick="generate()">Download PDF</a>
+            <a href="/">Issue Another Certificate</a>
+            <a href="/view">View Issued Certificates</a>
+        </div>
+    </div>
+    <script>
+        function generate(){
+            const doc = new window.jspdf.jsPDF()
+            const certData = {
+    recipient: "<%= block.sname %>",
+    regNo: "<%= block.reg%>",
+    course: "<%= block.course %>",
+    issuer: "<%= block.fname %>",
+    time : "<%= block.timestamp %>",
+    qrData: "<%= block.qr %>" 
+  };
+//    console.log("saved");
+        doc.setFontSize(22);
+        doc.text("Certificate of Completion", 105, 30, { align: "center" });
+//  console.log("saved");
+  doc.setFontSize(14);
+  doc.text(`This certifies that`, 105, 50, { align: "center" });
+  doc.setFontSize(16);
+  doc.text(`${certData.recipient}`, 105, 60, { align: "center" });
+  doc.setFontSize(14);
+  doc.text(`(Reg No: ${certData.regNo})`, 105, 70, { align: "center" });
+//  console.log("saved");
+  doc.text(`has successfully completed the course`, 105, 85, { align: "center" });
+  doc.setFontSize(16);
+  doc.text(`${certData.course}`, 105, 95, { align: "center" });
+
+  doc.setFontSize(12);
+  doc.text(`Issued By: ${certData.issuer}`, 20, 130);
+
+  doc.setFontSize(12);
+  doc.text(`Issued On: ${certData.time}`, 20, 145);
+
+  doc.rect(10, 10, 190, 277);
+
+  
+  doc.addImage(certData.qrData, "PNG", 150, 180, 40, 40,{align:"center"});
+
+ 
+  
+  doc.save(`${certData.regNo}.pdf`);
+        }
+    </script>
+</body>
+</html>

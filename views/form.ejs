@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/form.css">
+    <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+</head>
+<body>
+
+    <form action="/certInfo" method="post">
+        <h2>Certificate Issuance</h2>
+        <label for="sname">Student Name</label>
+        <input required type="text" name="sname" placeholder="Enter name"><br>
+        <label for="reg">Student Reg No</label>
+        <input placeholder="Enter Reg No" required type="text" name="reg"><br>
+        <label for="course">Course</label>
+        <input placeholder="Enter Course" required type="text" name="course"><br>
+        <label for="fname">Faculty Name</label>
+        <input placeholder="Enter Faculty Name" required type="text" name="fname"><br>
+        <label for="iid">Issuer Id</label>
+        <input placeholder="Enter Issuer Id" required type="text" name="iid"><br>
+        <input type="submit">
+    </form>
+</body>
+</html>

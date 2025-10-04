@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/certificates.css">
+    <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <% if(locals) { %>
+        <table>
+            <tr class="head">
+                <th>Name</th>
+                <th>Reg No</th>
+                <th>Course</th>
+                <th>Validation</th>
+            </tr>
+        
+        <% for(let i=0;i<certs.length;i++) {  %>
+            <tr>
+                <td><%= certs[i].sname %></td>
+                <td><%= certs[i].reg %></td>
+                <td><%= certs[i].course %></td>    
+                <td><img width="70px" height="70px" src="<%= certs[i].qr %>" alt="error loading"></td>
+            </tr>
+        <% }%>
+        </table>
+    <% } %>
+</body>
+</html>
