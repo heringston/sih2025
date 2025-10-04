@@ -3,9 +3,6 @@ import bodyParser from "body-parser";
 import pg from "pg";
 import bcrypt from "bcrypt";
 import { Block, chain } from "./blockchain.js";
-// const block = require("./blockchain/Block");
-import { BlockChain } from "./blockchain.js";
-// const blockchain = require("./blockchain/BlockChain");
 import qrcode from "qrcode";
 import { jsPDF } from "jspdf";
 
@@ -283,13 +280,6 @@ app.get("/verify",(req,res)=>{
 
 app.get("/view",(req,res)=>{
     res.render("certificates.ejs",chain);
-});
-
-app.get("/download",(req,res)=>{
-    const doc = new jsPDF();
-    doc.text("hello world",10,10);
-    doc.save("demo.pdf");
-    res.end();
 });
 
 app.listen(port, () => {
