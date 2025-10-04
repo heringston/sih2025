@@ -16,11 +16,12 @@
         <img width="200px" height="200px" src="<%# url %>" alt="error loading">
         !-->
         <div class="btns">
-             <a href="#" onclick="generate()">Download PDF</a>
+             <button onclick="generate()">Download PDF</button>
             <a href="/">Issue Another Certificate</a>
             <a href="/view">View Issued Certificates</a>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
         function generate(){
             const doc = new window.jspdf.jsPDF()
