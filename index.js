@@ -10,11 +10,11 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const saltrounds=10;
 const db = new pg.Client({
-  user: "postgres",
-  host: "localhost",
-  database: "login",
-  password: "herin123",
-  port: 5432,
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database:process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
 });
 db.connect();
 
@@ -285,3 +285,5 @@ app.get("/view",(req,res)=>{
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+export {db}
