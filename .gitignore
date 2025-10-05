@@ -1,4 +1,4 @@
 node_modules/
-thread.env
+.env
 css
 partials/
