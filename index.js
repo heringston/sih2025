@@ -258,6 +258,7 @@ app.post("/certInfo",(req,res)=>{
     chain.addBlock(block);
     const baseUrl = process.env.BASE_URL;
     const verifyUrl = `${baseUrl}/verify?id=${block.certid}`;
+      
     console.log(process.env.BASE_URL);
     
     const url = qrcode.toDataURL(verifyUrl,(err,url)=>{
@@ -278,8 +279,10 @@ app.post("/certInfo",(req,res)=>{
 
 app.get("/verify",(req,res)=>{
     let id = req.query.id;
+      console.log("worked fine till here");
     let block = chain.getBlock(id);
     // console.log(block);
+  console.log("worked fine till here");
     
     if(chain.isChainValid() && block.hash == block.calculateHash())
         res.send("Valid");

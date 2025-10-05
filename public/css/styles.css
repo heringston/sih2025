@@ -2,7 +2,7 @@ body{
   display:flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items:center;
   height: 100vh;
   text-align: center;
   font-size: large;
@@ -22,7 +22,7 @@ p{
 .cards{
   height:fit-content;
   display:flex;
-  justify-content:center;
+  justify-content:space-evenly;
   align-items: center;
   flex-wrap: wrap;
   width: 100%;
