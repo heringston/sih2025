@@ -253,7 +253,8 @@ app.post("/getCerts",(req,res)=>{
 app.post("/certInfo",(req,res)=>{
     let block = new Block(0,req.body.sname,req.body.reg,req.body.course,req.body.fname,req.body.iid,new Date());
     chain.addBlock(block);
-    const verifyUrl = `https://localhost:3000/verify?id=${block.certid}`;
+    const baseUrl = process.env.BASE_URL || "https://localhost:3000";
+    const verifyUrl = `${baseUrl}/verify?id=${block.certid}`;
     const url = qrcode.toDataURL(verifyUrl,(err,url)=>{
         if(err) throw err;
         let result = {
