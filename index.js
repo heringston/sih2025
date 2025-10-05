@@ -4,10 +4,13 @@ import pg from "pg";
 import bcrypt from "bcrypt";
 import { Block, chain } from "./blockchain.js";
 import qrcode from "qrcode";
-import { jsPDF } from "jspdf";
+import dotenv from "dotenv";
+
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+dotenv.config();
+
 const saltrounds=10;
 const db = new pg.Client({
   user: process.env.DB_USER,
@@ -253,8 +256,10 @@ app.post("/getCerts",(req,res)=>{
 app.post("/certInfo",(req,res)=>{
     let block = new Block(0,req.body.sname,req.body.reg,req.body.course,req.body.fname,req.body.iid,new Date());
     chain.addBlock(block);
-    const baseUrl = process.env.BASE_URL || "https://localhost:3000";
+    const baseUrl = process.env.BASE_URL;
     const verifyUrl = `${baseUrl}/verify?id=${block.certid}`;
+    console.log(process.env.BASE_URL);
+    
     const url = qrcode.toDataURL(verifyUrl,(err,url)=>{
         if(err) throw err;
         let result = {
